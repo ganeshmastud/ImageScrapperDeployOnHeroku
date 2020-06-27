@@ -13,6 +13,9 @@ def showiamge():
     drive_path = './chromedriver'
     if request.method == "POST":
         search_term=request.form['keyword']
+        print(search_term)
+        if len(search_term) <0:
+            return "Please enter something."
         srch_img=search_and_download_image(search_term,drive_path)
         print(srch_img)
         try:

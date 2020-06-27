@@ -6,7 +6,11 @@
     <script>
 
         function alertText(){
-         alert("Please wait while we downloading the images for you")
+            var input=document.getElementById("content");
+            if( input.length==0){
+                alert("Please enter something to search.");
+            }
+         alert("Please wait while we downloading the images for you");
         }
     </script>
     <div class="form " style="text-align:center">
