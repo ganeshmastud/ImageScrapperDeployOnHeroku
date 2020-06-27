@@ -25,13 +25,13 @@ def showiamge():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.binary_location = GOOGLE_CHROME_BIN
     browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-    drive_path = browser #'./chromedriver'
+    driver  = browser #'./chromedriver'
     if request.method == "POST":
         search_term=request.form['keyword']
         print(search_term)
         if len(search_term) <0:
             return "Please enter something."
-        srch_img=search_and_download_image(search_term,drive_path)
+        srch_img=search_and_download_image(search_term,driver)
         print(srch_img)
         try:
             if len(srch_img)>0:

@@ -86,12 +86,12 @@ def fetch_img(search_term,target_path):
 		return 0
 
 	return list_ofimgs
-def search_and_download_image(search_term: str, drive_path: str, target_path='./static',max_img=15):
+def search_and_download_image(search_term: str, driver , target_path='./static',max_img=15):
 	target_folder= os.path.join(target_path, '_'.join(search_term.lower().split()))
 	
 	if not os.path.exists(target_folder):
 		os.makedirs(target_folder)
-	with webdriver.Chrome(executable_path=drive_path) as driver:
+	# with webdriver.Chrome(executable_path=drive_path) as driver:
 		res=fetch_img_urls(search_term,max_img, driver, sleep_between_interactions=1)
 
 	cnt=0
