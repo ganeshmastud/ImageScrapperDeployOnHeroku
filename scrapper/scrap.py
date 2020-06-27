@@ -86,7 +86,7 @@ def fetch_img(search_term,target_path):
 		return 0
 
 	return list_ofimgs
-def search_and_download_image(search_term: str, driver , target_path='./static',max_img=15):
+def search_and_download_image(search_term: str, driver , target_path='./static',max_img=5):
 	target_folder= os.path.join(target_path, '_'.join(search_term.lower().split()))
 	
 	if not os.path.exists(target_folder):
