@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from selenium import webdriver
 from flask_bootstrap import Bootstrap
 from scrapper.scrap import *
 app = Flask(__name__)
@@ -10,7 +10,14 @@ def home():
     return render_template('index.html')
 @app.route('/showimg', methods=["POST","GET"])
 def showiamge():
-    drive_path = './chromedriver'
+    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.binary_location = GOOGLE_CHROME_PATH
+    browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+    drive_path = browser #'./chromedriver'
     if request.method == "POST":
         search_term=request.form['keyword']
         print(search_term)
